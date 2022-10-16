@@ -22,7 +22,7 @@ namespace oi {
 	{
 		return value[i];
 	}
-// ---------------------------------------------------------------------------
+
 	template<typename T>
 	inline
 	const tvec2<T>& tmat2<T>::operator[] (const uint32_t& i) const
@@ -47,7 +47,7 @@ namespace oi {
 		this->value[1] += t;
 		return *this;
 	}
-// ---------------------------------------------------------------------------
+
 	template<typename T>
 	inline
 	const tmat2<T>& tmat2<T>::operator+=(const tmat2<T>& o)
@@ -65,7 +65,7 @@ namespace oi {
 		this->value[1] -= t;
 		return *this;
 	}
-// ---------------------------------------------------------------------------
+
 	template<typename T>
 	inline
 	const tmat2<T>& tmat2<T>::operator-=(const tmat2<T>& o)
@@ -83,13 +83,15 @@ namespace oi {
 		this->value[1] *= t;
 		return *this;
 	}
-// ---------------------------------------------------------------------------
+
 	template<typename T>
 	inline
 	const tmat2<T>& tmat2<T>::operator*=(const tmat2<T>& o)
 	{
-		this->value[0] *= o.value[0];
-		this->value[1] *= o.value[1];
+		this->value[0][0] = this->value[0][0] * o[0][0] + this->value[0][1] * o[1][0];
+		this->value[0][1] = this->value[0][0] * o[0][1] + this->value[0][1] * o[1][1];
+		this->value[1][0] = this->value[1][0] * o[0][0] + this->value[1][1] * o[1][0];
+		this->value[1][1] = this->value[1][0] * o[0][1] + this->value[1][1] * o[1][1];
 		return *this;
 	}
 // ---------------------------------------------------------------------------
@@ -99,15 +101,6 @@ namespace oi {
 	{
 		this->value[0] /= t;
 		this->value[1] /= t;
-		return *this;
-	}
-// ---------------------------------------------------------------------------
-	template<typename T>
-	inline
-	const tmat2<T>& tmat2<T>::operator/=(const tmat2<T>& o)
-	{
-		this->value[0] /= o.value[0];
-		this->value[1] /= o.value[1];
 		return *this;
 	}
 // ---------------------------------------------------------------------------
@@ -122,63 +115,112 @@ namespace oi {
 	inline
 	tmat2<T> operator+ (const tmat2<T>& m, T t) 
 	{
-		return tmat2<T>(m.value[0] + t, m.value[1] + t);
+		return tmat2<T>(m[0] + t, m[1] + t);
 	}
 
 	template<typename T>
 	inline
 	tmat2<T> operator+ (const T& t, tmat2<T> m)
 	{
-		return tmat2<T>(m.value[0] + t, m.value[1] + t);
+		return tmat2<T>(m[0] + t, m[1] + t);
 	}
-// ---------------------------------------------------------------------------
+
 	template<typename T>
 	inline
 	tmat2<T> operator+ (const tmat2<T>& m, tmat2<T> o)
 	{
-		return tmat2<T>(m.value[0] + o.value[0], m.value[1] + o.value[1]);
+		return tmat2<T>(m[0] + o[0], m[1] + o[1]);
 	}
 // ---------------------------------------------------------------------------
 	template<typename T>
 	inline
 	tmat2<T> operator- (const tmat2<T>& m, T t)
 	{
-		return tmat2<T>(m.value[0] - t, m.value[1] - t);
+		return tmat2<T>(m[0] - t, m[1] - t);
 	}
-// ---------------------------------------------------------------------------
+
 	template<typename T>
 	inline
 	tmat2<T> operator- (const T& t, tmat2<T> m)
 	{
-		return tmat2<T>(t - m.value[0], t - m.value[1]);
+		return tmat2<T>(t - m[0], t - m[1]);
 	}
-// ---------------------------------------------------------------------------
+
 	template<typename T>
 	inline
 	tmat2<T> operator- (const tmat2<T>& m, tmat2<T> o)
 	{
-		return tmat2<T>(m.value[0] - o.value[0], m.value[1] - o.value[1]);
+		return tmat2<T>(m[0] - o[0], m[1] - o[1]);
+	}
+	
+	template<typename T>
+	inline
+	tmat2<T> operator- (const tmat2<T>& m)
+	{
+		return tmat2<T>(-m[0], -m[1]);
 	}
 // ---------------------------------------------------------------------------
 	template<typename T>
 	inline
 	tmat2<T> operator* (const tmat2<T>& m, T t)
 	{
-		return tmat2<T>(m.value[0] * t, m.value[1] * t);
+		return tmat2<T>(m[0] * t, m[1] * t);
 	}
-// ---------------------------------------------------------------------------
+
 	template<typename T>
 	inline
 	tmat2<T> operator* (const T& t, tmat2<T> m)
 	{
-		return tmat2<T>(m.value[0] * t, m.value[1] * t);
+		return tmat2<T>(m[0] * t, m[1] * t);
 	}
-// ---------------------------------------------------------------------------
+
 	template<typename T>
 	inline
 	tmat2<T> operator* (const tmat2<T>& m, tmat2<T> o)
 	{
-		return tmat2<T>(m.value[0] * o.value[0], m.value[1] * o.value[1]);
+		return tmat2<T>(m[0][0]*o[0][0] + m[0][1]*o[1][0],   m[0][0]*o[0][1] + m[0][1]*o[1][1],
+						m[1][0]*o[0][0] + m[1][1]*o[1][0],   m[1][0]*o[0][1] + m[1][1]*o[1][1]);
+	}
+// ---------------------------------------------------------------------------
+	template<typename T>
+	inline
+	tmat2<T> operator/ (const tmat2<T>& m, T t)
+	{
+		return tmat2<T>(m[0] / t, m[1] / t);
+	}
+
+	template<typename T>
+	inline
+	tmat2<T> operator/ (const T& t, tmat2<T> m)
+	{
+		return tmat2<T>(t / m[0], t / m[1]);
+	}
+// ---------------------------------------------------------------------------
+	template<typename T>
+	inline
+	tmat2<T> transpose(const tmat2<T>& m)
+	{
+		return tmat2<T>(m[0][0], m[1][0], m[0][1], m[1][1]);
+	}
+// ---------------------------------------------------------------------------
+	template<typename T>
+	inline
+	T determinantof(const tmat2<T>& m)
+	{
+		return m[0][0] * m[1][1] - m[0][1] * m[1][0];
+	}
+// ---------------------------------------------------------------------------
+	template<typename T>
+	inline
+	tmat2<T> inverse(const tmat2<T>& m)
+	{
+		return ((T)1.0 / determinantof(m)) * tmat2<T>(m[1][1], -m[0][1], -m[1][0], m[0][0]);
+	}
+// ---------------------------------------------------------------------------
+	template<typename T>
+	T* value_ptr(tmat2<T>& m)
+	{
+		return &(m[0][0]);
 	}
 // ---------------------------------------------------------------------------
 

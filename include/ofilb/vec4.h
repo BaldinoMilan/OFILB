@@ -20,7 +20,7 @@ namespace oi
 {
 	template <typename T>
 	struct tvec4 {
-
+		// constructors
 		tvec4() : x(), y(), z() {}
 		explicit tvec4(const T& _xyzw) : x(_xyzw), y(_xyzw), z(_xyzw), w(_xyzw) {}
 		tvec4(const T& _x, const T& _y, const T& _z, T _w) : x(_x), y(_y), z(_z), w(_w) {}
@@ -28,17 +28,18 @@ namespace oi
 
 		tvec4& operator= (const tvec4& o);
 
+		// operators
 		const tvec4& operator+= (const T& t);
 		const tvec4& operator+= (const tvec4& o);
 
 		const tvec4& operator-= (const T& t);
 		const tvec4& operator-= (const tvec4& o);
 
+
 		const tvec4& operator*= (const T& t);
 		const tvec4& operator*= (const tvec4& o);
 
 		const tvec4& operator/= (const T& t);
-		const tvec4& operator/= (const tvec4& o);
 
 		T& operator[] (const uint32_t& i);
 		const T& operator[] (const uint32_t& i) const;
@@ -54,35 +55,55 @@ namespace oi
 		};
 	};
 
+	// operator +
 	template<typename T>
 	tvec4<T> operator+(const tvec4<T>& v, tvec4<T> u);
+	
 	template<typename T>
 	tvec4<T> operator+(const tvec4<T>& v, T t);
-
+	
+	template<typename T>
+	tvec4<T> operator+(const T& t, tvec4<T> v);
+	
+	// operator -
 	template<typename T>
 	tvec4<T> operator-(const tvec4<T>& v, tvec4<T> u);
+	
 	template<typename T>
 	tvec4<T> operator-(const tvec4<T>& v, T t);
+	
 	template<typename T>
 	tvec4<T> operator-(const T& t, tvec4<T> v);
+	
 	template<typename T>
-	tvec4<T>  operator-(const tvec4<T>& v);
+	tvec4<T> operator-(const tvec4<T>& v);
 
+	// operator *
 	template<typename T>
 	tvec4<T> operator*(const tvec4<T>& v, tvec4<T> u);
+	
 	template<typename T>
 	tvec4<T> operator*(const tvec4<T>& v, T t);
 
 	template<typename T>
-	tvec4<T> operator/(const tvec4<T>& v, tvec4<T> u);
+	tvec4<T> operator*(const T& t, tvec4<T> v);
+
+	// operator /
 	template<typename T>
 	tvec4<T> operator/(const tvec4<T>& v, T t);
 
+	template<typename T>
+	tvec4<T> operator/(const T& t, tvec4<T> v);
+
+	// functions
 	template<typename T>
 	T length(const tvec4<T>& v);
 
 	template<typename T>
 	tvec4<T> normalize(const tvec4<T>& o);
+
+	template<typename T>
+	T* value_ptr(tvec4<T>& v);
 
 } // namespace oi
 

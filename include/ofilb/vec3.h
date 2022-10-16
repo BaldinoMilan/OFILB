@@ -20,7 +20,7 @@ namespace oi
 {
 	template <typename T>
 	struct tvec3 {
-
+		// constructors
 		tvec3() : x(), y(), z() {}
 		explicit tvec3(const T& _xyz) : x(_xyz), y(_xyz), z(_xyz) {}
 		tvec3(const T& _x, const T& _y, T _z) : x(_x), y(_y), z(_z) {}
@@ -28,6 +28,7 @@ namespace oi
 
 		tvec3& operator= (const tvec3& o);
 
+		// operators
 		const tvec3& operator+= (const T& t);
 		const tvec3& operator+= (const tvec3& o);
 
@@ -38,7 +39,6 @@ namespace oi
 		const tvec3& operator*= (const tvec3& o);
 
 		const tvec3& operator/= (const T& t);
-		const tvec3& operator/= (const tvec3& o);
 
 		T& operator[] (const uint32_t& i);
 		const T& operator[] (const uint32_t& i) const;
@@ -56,37 +56,55 @@ namespace oi
 		};
 	};
 
+	// operator +
 	template<typename T>
 	tvec3<T> operator+(const tvec3<T>&v, tvec3<T> u);
+
 	template<typename T>
 	tvec3<T> operator+(const tvec3<T>& v, T t);
+
 	template<typename T>
 	tvec3<T> operator+(const T& t, tvec3<T> v);
 
+	// operator -
 	template<typename T>
 	tvec3<T> operator-(const tvec3<T>& v, tvec3<T> u);
+
 	template<typename T>
 	tvec3<T> operator-(const tvec3<T>& v, T t);
+
 	template<typename T>
 	tvec3<T> operator-(const T& t, tvec3<T> v);
+
 	template<typename T>
 	tvec3<T> operator-(const tvec3<T>& v);
 
+	// operator *
 	template<typename T>
 	tvec3<T> operator*(const tvec3<T>& v, tvec3<T> u);
+
 	template<typename T>
 	tvec3<T> operator*(const tvec3<T>& v, T t);
 
 	template<typename T>
-	tvec3<T> operator/(const tvec3<T>& v, tvec3<T> u);
+	tvec3<T> operator*(const T& t, tvec3<T> v);
+
+	// operator /
 	template<typename T>
 	tvec3<T> operator/(const tvec3<T>& v, T t);
 
+	template<typename T>
+	tvec3<T> operator/(const T& t, tvec3<T> v);
+
+	// functions
 	template<typename T>
 	T length(const tvec3<T>& v);
 
 	template<typename T>
 	tvec3<T> normalize(const tvec3<T>& o);
+
+	template<typename T>
+	T* value_ptr(tvec3<T>& v);
 
 } // namespace oi
 

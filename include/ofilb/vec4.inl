@@ -103,18 +103,7 @@ namespace oi
 		this->w /= t;
 		return *this;
 	}
-
-	template<typename T>
-	inline
-	const tvec4<T>& tvec4<T>::operator/=(const tvec4& o)
-	{
-		this->x /= o.x;
-		this->y /= o.y;
-		this->z /= o.z;
-		this->w /= o.w;
-		return *this;
-	}
-	// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 	template<typename T>
 	inline
 		T& tvec4<T>::operator[](const uint32_t& i)
@@ -178,6 +167,13 @@ namespace oi
 	{
 		return tvec4<T>(v.x+t, v.y+t, v.z+t, v.w+t);
 	}
+
+	template<typename T>
+	inline
+	tvec4<T> operator+(const T& t, tvec4<T> v)
+	{
+		return tvec4<T>(v.x + t, v.y + t, v.z + t, v.w);
+	}
 	// ---------------------------------------------------------------------------
 	template<typename T>
 	inline
@@ -220,19 +216,26 @@ namespace oi
 	{
 		return tvec4<T>(v.x*t, v.y*t, v.z*t, v.w*t);
 	}
-	// ---------------------------------------------------------------------------
+
 	template<typename T>
 	inline
-	tvec4<T> operator/(const tvec4<T>& v, tvec4<T> u)
+	tvec4<T> operator*(const T& t, tvec4<T> v)
 	{
-		return tvec4<T>(v.x/u.x, v.y/u.y, v.z/u.z, v.w/u.w);
+		return tvec4<T>(v.x*t, v.y*t, v.z*t, v.w*t);
 	}
-
+// ---------------------------------------------------------------------------
 	template<typename T>
 	inline
 	tvec4<T> operator/(const tvec4<T>& v, T t)
 	{
 		return tvec4<T>(v.x/t, v.y/t, v.z/t, v.w/t);
+	}
+
+	template<typename T>
+	inline
+	tvec4<T> operator/(const T& t, tvec4<T> v)
+	{
+		return tvec4<T>(t / v.x, t / v.y, t / v.z, t / v.w);
 	}
 	// ---------------------------------------------------------------------------
 	template<typename T>
@@ -248,5 +251,12 @@ namespace oi
 	{
 		return o / length(o);
 	}
-
+// ---------------------------------------------------------------------------
+	template<typename T>
+	inline
+	T* value_ptr(tvec4<T>& v)
+	{
+		return &(v.x);
+	}
+// ---------------------------------------------------------------------------
 }

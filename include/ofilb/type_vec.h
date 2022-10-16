@@ -34,7 +34,6 @@ namespace oi
 	typedef tvec4<double> dvec4;
 	typedef tvec4<int> ivec4;
 	typedef tvec4<unsigned int> uivec4;
-
 } // namespace oi
 
 #endif // TYPE VECTOR OFILB
