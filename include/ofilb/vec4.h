@@ -16,6 +16,9 @@ Obj Format Import Library (OFILB)
 #ifndef VECTOR4_OFILB
 #define VECTOR4_OFILB
 
+#include <ofilb/vec2.h>
+#include <ofilb/vec3.h>
+
 namespace oi
 {
 	template <typename T>
@@ -44,8 +47,14 @@ namespace oi
 		T& operator[] (const uint32_t& i);
 		const T& operator[] (const uint32_t& i) const;
 
-		template<typename C>
-		operator tvec4<C>();
+		template<typename c>
+		operator tvec4<c>();
+
+		template<typename c>
+		operator tvec2<c>();
+
+		template<typename c>
+		operator tvec3<c>();
 
 		union
 		{

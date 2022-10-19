@@ -26,7 +26,7 @@ namespace oi
 		explicit tvec2 (const T& _xy) : x(_xy), y(_xy) {}
 		tvec2 (const T& _x, T _y) : x(_x), y(_y) {}
 		tvec2 (const tvec2&) = default;
-
+		
 		tvec2& operator= (const tvec2& o);
 
 		// operators

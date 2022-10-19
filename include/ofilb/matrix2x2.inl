@@ -88,10 +88,10 @@ namespace oi {
 	inline
 	const tmat2<T>& tmat2<T>::operator*=(const tmat2<T>& o)
 	{
-		this->value[0][0] = this->value[0][0] * o[0][0] + this->value[0][1] * o[1][0];
-		this->value[0][1] = this->value[0][0] * o[0][1] + this->value[0][1] * o[1][1];
-		this->value[1][0] = this->value[1][0] * o[0][0] + this->value[1][1] * o[1][0];
-		this->value[1][1] = this->value[1][0] * o[0][1] + this->value[1][1] * o[1][1];
+		this->value[0][0] = this->value[0][0] * o[0][0] + this->value[1][0] * o[0][1];
+		this->value[0][1] = this->value[0][1] * o[0][0] + this->value[1][1] * o[0][1];
+		this->value[1][0] = this->value[0][0] * o[1][0] + this->value[1][0] * o[1][1];
+		this->value[1][1] = this->value[0][1] * o[1][0] + this->value[1][1] * o[1][1];
 		return *this;
 	}
 // ---------------------------------------------------------------------------
@@ -178,8 +178,26 @@ namespace oi {
 	inline
 	tmat2<T> operator* (const tmat2<T>& m, tmat2<T> o)
 	{
-		return tmat2<T>(m[0][0]*o[0][0] + m[0][1]*o[1][0],   m[0][0]*o[0][1] + m[0][1]*o[1][1],
-						m[1][0]*o[0][0] + m[1][1]*o[1][0],   m[1][0]*o[0][1] + m[1][1]*o[1][1]);
+		return tmat2<T>(m[0][0]*o[0][0] + m[1][0]*o[0][1],   
+						m[0][1]*o[0][0] + m[1][1]*o[0][1],
+						m[0][0]*o[1][0] + m[1][0]*o[1][1],   
+						m[0][1]*o[1][0] + m[1][1]*o[1][1]);
+	}
+
+	template<typename T>
+	inline 
+	tvec2<T> operator* (const tmat2<T>& m, tvec2<T> v)
+	{
+		return tvec2<T>(v.x * m[0][0] + v.y * m[1][0],
+						v.x * m[0][1] + v.y * m[1][1]);
+	}
+
+	template<typename T>
+	inline
+	tvec2<T> operator* (const tvec2<T>& v, tmat2<T> m)
+	{
+		return tvec2<T>(v.x * m[0][0] + v.y * m[0][1],
+						v.x * m[1][0] + v.y * m[1][1]);
 	}
 // ---------------------------------------------------------------------------
 	template<typename T>

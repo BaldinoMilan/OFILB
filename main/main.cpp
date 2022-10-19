@@ -13,10 +13,10 @@ Obj Format Import Library (OFILB)
 
 int main()
 {
-	oi::mat2 matrix(1.0f, 2.0f, 
-					3.0f, 4.0f);
-	matrix = matrix * oi::inverse(matrix);
+	oi::vec4 vector4;
+	oi::vec2 v2;
+	oi::vec3 v3;
 
-	std::cout << oi::value_ptr<float>(matrix) << " " << *oi::value_ptr<float>(matrix) << std::endl;
-	std::cout << matrix[0][0] << " " << matrix[0][1] << std::endl << matrix[1][0] << " " << matrix[1][1] << std::endl;
+	v2 = vector4;
+	v3 = vector4;
 }

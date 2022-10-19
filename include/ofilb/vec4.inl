@@ -147,11 +147,27 @@ namespace oi
 	}
 	// ---------------------------------------------------------------------------
 	template<typename T>
-	template<typename C>
+	template<typename c>
 	inline
-	tvec4<T>::operator tvec4<C>()
+	tvec4<T>::operator tvec4<c>()
 	{
-		return tvec4<C>(static_cast<C>(x), static_cast<C>(y), static_cast<C>(z), static_cast<C>(w));
+		return tvec4<c>(static_cast<c>(x), static_cast<c>(y), static_cast<c>(z), static_cast<c>(w));
+	}
+
+	template<typename T>
+	template<typename c>
+	inline
+	tvec4<T>::operator tvec2<c>()
+	{
+		return tvec2<c>(static_cast<c>(x), static_cast<c>(y));
+	}
+
+	template<typename T>
+	template<typename c>
+	inline
+	tvec4<T>::operator tvec3<c>()
+	{
+		return tvec3<c>(static_cast<c>(x), static_cast<c>(y), static_cast<c>(z));
 	}
 	// ---------------------------------------------------------------------------
 	template<typename T>

@@ -86,6 +86,9 @@ namespace oi {
 	template<typename T>
 	tmat2<T> operator* (const tmat2<T>& m, tmat2<T> o);
 
+	template<typename T>
+	tvec2<T> operator* (const tmat2<T>& m, tvec2<T> v);
+
 	// operator /
 	template<typename T>
 	tmat2<T> operator/ (const tmat2<T>& m, T t);

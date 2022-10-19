@@ -14,7 +14,9 @@ Obj Format Import Library (OFILB)
 #endif
 
 #ifndef VECTOR3_OFILB
-#define VECTOR2_OFILB
+#define VECTOR3_OFILB
+
+#include <ofilb/vec2.h>
 
 namespace oi
 {
@@ -25,6 +27,7 @@ namespace oi
 		explicit tvec3(const T& _xyz) : x(_xyz), y(_xyz), z(_xyz) {}
 		tvec3(const T& _x, const T& _y, T _z) : x(_x), y(_y), z(_z) {}
 		tvec3(const tvec3&) = default;
+		//tvec3(const tvec4<T>& v) : x(v.x), y(v.y), z(v.z) {}
 
 		tvec3& operator= (const tvec3& o);
 
@@ -43,8 +46,11 @@ namespace oi
 		T& operator[] (const uint32_t& i);
 		const T& operator[] (const uint32_t& i) const;
 
-		template<typename C>
-		operator tvec3<C>();
+		template<typename c>
+		operator tvec3<c>();
+
+		template<typename c>
+		operator tvec2<c>();
 
 		union
 		{
