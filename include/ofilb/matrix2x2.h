@@ -42,15 +42,14 @@ namespace oi {
 		const tmat2<T>& operator-= (const tmat2& o);
 
 		const tmat2<T>& operator*= (const T& t);
-		const tmat2<T>& operator*= (const tmat2& o);
-
+	
 		const tmat2<T>& operator/= (const T& t);
 		
 		tvec2<T>& operator[] (const uint32_t& i);
 		const tvec2<T>& operator[] (const uint32_t& i) const;
 
-		template<typename C>
-		operator tmat2<C> ();
+		template<typename c>
+		operator tmat2<c> ();
 	};
 
 	// operator +
@@ -101,7 +100,13 @@ namespace oi {
 	tmat2<T> transpose(const tmat2<T>& m);
 	
 	template<typename T>
-	T determinantof(const tmat2<T>& m);
+	tmat2<T> adjoint(const tmat2<T>& m);
+
+	template<typename T>
+	tmat2<T> cofactor(const tmat2<T>& m);
+
+	template<typename T>
+	T determinant(const tmat2<T>& m);
 
 	template<typename T>
 	tmat2<T> inverse(const tmat2<T>& m);

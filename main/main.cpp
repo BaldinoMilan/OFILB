@@ -11,12 +11,21 @@ Obj Format Import Library (OFILB)
 #include <ofilb/type_vec.h>
 #include <ofilb/type_matrix.h>
 
+
+std::ostream& operator<<(std::ostream& stream, const oi::mat3& mat)
+{
+	stream << mat[0][0] << " " << mat[0][1] << " " << mat[0][2] << std::endl << mat[1][0] << " " << mat[1][1] << " " << mat[1][2] << std::endl << mat[2][0] << " " << mat[2][1] << " " << mat[2][2];
+	return stream;
+}
+
+std::ostream& operator<<(std::ostream& stream, const oi::mat2& mat)
+{
+	stream << mat[0][0] << " " << mat[0][1] << std::endl << mat[1][0] << " " << mat[1][1];
+	return stream;
+}
+
+
 int main()
 {
-	oi::vec4 vector4;
-	oi::vec2 v2;
-	oi::vec3 v3;
 
-	v2 = vector4;
-	v3 = vector4;
 }
