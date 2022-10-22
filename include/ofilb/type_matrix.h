@@ -13,6 +13,7 @@ Obj Format Import Library (OFILB)
 
 #include "ofilb/matrix2x2.h"
 #include "ofilb/matrix3x3.h"
+#include "ofilb/matrix4x4.h"
 
 namespace oi 
 {
@@ -27,6 +28,12 @@ namespace oi
 	typedef tmat3<double> dmat3;
 	typedef tmat3<int> imat3;
 	typedef tmat3<unsigned int> uimat3;
+
+	// tmat4
+	typedef tmat4<float> mat4;
+	typedef tmat4<double> dmat4;
+	typedef tmat4<int> imat4;
+	typedef tmat4<unsigned int> uimat4;
 
 }
 

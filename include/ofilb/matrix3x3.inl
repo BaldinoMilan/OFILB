@@ -106,6 +106,13 @@ namespace oi {
 	{
 		return tmat3<c>((tvec3<c>)value[0], (tvec3<c>)value[1], (tvec3<c>)value[2]);
 	}
+
+	template<typename T>
+	inline
+	tmat3<T>::operator tmat2<T>()
+	{
+		return tmat2<T>(tvec2<T>(value[0]), tvec2<T>(value[1]));
+	}
 // ---------------------------------------------------------------------------
 	template<typename T>
 	inline

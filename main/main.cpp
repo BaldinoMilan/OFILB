@@ -8,9 +8,7 @@ Obj Format Import Library (OFILB)
 */
 
 #include <iostream>
-#include <ofilb/type_vec.h>
-#include <ofilb/type_matrix.h>
-
+#include <ofilb/ofilb.h>
 
 std::ostream& operator<<(std::ostream& stream, const oi::mat3& mat)
 {
@@ -27,5 +25,5 @@ std::ostream& operator<<(std::ostream& stream, const oi::mat2& mat)
 
 int main()
 {
-
+	return 0;
 }
