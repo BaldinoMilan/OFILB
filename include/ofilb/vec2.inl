@@ -18,7 +18,7 @@ namespace oi
 // ---------------------------------------------------------------------------
 	template<typename T>
 	inline
-	tvec2<T>& tvec2<T>::operator=(const tvec2& o)
+	tvec2<T>& tvec2<T>::operator=(const tvec2& o) noexcept
 	{
 		this->x = o.x; 
 		this->y = o.y;
@@ -27,7 +27,7 @@ namespace oi
 // ---------------------------------------------------------------------------
 	template<typename T>
 	inline
-	const tvec2<T>& tvec2<T>::operator+=(const T& t)
+	const tvec2<T>& tvec2<T>::operator+=(const T& t) noexcept
 	{
 		this->x += t; 
 		this->y += t;
@@ -36,7 +36,7 @@ namespace oi
 
 	template<typename T>
 	inline 
-	const tvec2<T>& tvec2<T>::operator+=(const tvec2& o)
+	const tvec2<T>& tvec2<T>::operator+=(const tvec2& o) noexcept
 	{
 		this->x += o.x; 
 		this->y += o.y;
@@ -45,7 +45,7 @@ namespace oi
 // ---------------------------------------------------------------------------
 	template<typename T>
 	inline
-	const tvec2<T>& tvec2<T>::operator-=(const T& t)
+	const tvec2<T>& tvec2<T>::operator-=(const T& t) noexcept
 	{
 		this->x -= t;
 		this->y -= t;
@@ -54,7 +54,7 @@ namespace oi
 
 	template<typename T>
 	inline
-	const tvec2<T>& tvec2<T>::operator-=(const tvec2& o)
+	const tvec2<T>& tvec2<T>::operator-=(const tvec2& o) noexcept
 	{
 		this->x -= o.x; 
 		this->y -= o.y;
@@ -63,7 +63,7 @@ namespace oi
 // ---------------------------------------------------------------------------
 	template<typename T>
 	inline
-	const tvec2<T>& tvec2<T>::operator*=(const T& t)
+	const tvec2<T>& tvec2<T>::operator*=(const T& t) noexcept
 	{
 		this->x *= t; 
 		this->y *= t;
@@ -72,7 +72,7 @@ namespace oi
 
 	template<typename T>
 	inline
-	const tvec2<T>& tvec2<T>::operator*=(const tvec2& o)
+	const tvec2<T>& tvec2<T>::operator*=(const tvec2& o) noexcept
 	{
 		this->x *= o.x; 
 		this->y *= o.y;
@@ -81,7 +81,7 @@ namespace oi
 // ---------------------------------------------------------------------------
 	template<typename T>
 	inline
-	const tvec2<T>& tvec2<T>::operator/=(const T& t)
+	const tvec2<T>& tvec2<T>::operator/=(const T& t) noexcept
 	{
 		this->x /= t; 
 		this->y /= t;
@@ -90,7 +90,7 @@ namespace oi
 // ---------------------------------------------------------------------------
 	template<typename T>
 	inline 
-	T& tvec2<T>::operator[](const uint32_t& i)
+	T& tvec2<T>::operator[](const uint32_t& i) noexcept
 	{
 		switch (i)
 		{
@@ -107,7 +107,7 @@ namespace oi
 
 	template<typename T>
 	inline
-	const T& tvec2<T>::operator[](const uint32_t& i) const
+	const T& tvec2<T>::operator[](const uint32_t& i) const noexcept
 	{
 		switch (i)
 		{
@@ -125,112 +125,112 @@ namespace oi
 	template<typename T>
 	template<typename C>
 	inline 
-	tvec2<T>::operator tvec2<C>()
+	tvec2<T>::operator tvec2<C>() noexcept
 	{
 		return tvec2<C>(static_cast<C>(x), static_cast<C>(y));
 	}
 // ---------------------------------------------------------------------------
 	template<typename T>
 	inline
-	tvec2<T> operator+(const tvec2<T>& v, tvec2<T> u)
+	tvec2<T> operator+(const tvec2<T>& v, tvec2<T> u) noexcept
 	{
 		return tvec2<T>(v.x + u.x, v.y + u.y);
 	}
 
 	template<typename T>
 	inline
-	tvec2<T> operator+(const tvec2<T>& v, T t)
+	tvec2<T> operator+(const tvec2<T>& v, T t) noexcept
 	{
 		return tvec2<T>(v.x + t, v.y + t);
 	}
 
 	template<typename T>
 	inline
-	tvec2<T> operator+(const T& t, tvec2<T> v)
+	tvec2<T> operator+(const T& t, tvec2<T> v) noexcept
 	{
 		return tvec2<T>(v.x + t, v.y + t);
 	}
 // ---------------------------------------------------------------------------
 	template<typename T>
 	inline
-	tvec2<T> operator-(const tvec2<T>& v, tvec2<T> u)
+	tvec2<T> operator-(const tvec2<T>& v, tvec2<T> u) noexcept
 	{
 		return tvec2<T>(v.x - u.x, v.y - u.y);
 	}
 
 	template<typename T>
 	inline
-	tvec2<T> operator-(const tvec2<T>& v, T t)
+	tvec2<T> operator-(const tvec2<T>& v, T t) noexcept
 	{
 		return tvec2<T>(v.x - t, v.y - t);
 	}
 	
 	template<typename T>
 	inline
-	tvec2<T> operator-(const T& t, tvec2<T> v)
+	tvec2<T> operator-(const T& t, tvec2<T> v) noexcept
 	{
 		return tvec2<T>(t-v.x, t-v.y);
 	}
 
 	template<typename T>
 	inline
-	tvec2<T>  operator-(const tvec2<T>& v)
+	tvec2<T> operator-(const tvec2<T>& v)  noexcept
 	{
 		return tvec2<T>(-v.x, -v.y);
 	}
 // ---------------------------------------------------------------------------
 	template<typename T>
 	inline
-	tvec2<T> operator*(const tvec2<T>& v, tvec2<T> u)
+	tvec2<T> operator*(const tvec2<T>& v, tvec2<T> u) noexcept
 	{
 		return tvec2<T>(v.x * u.x, v.y * u.y);
 	}
 
 	template<typename T>
 	inline
-	tvec2<T> operator*(const tvec2<T>& v, T t)
+	tvec2<T> operator*(const tvec2<T>& v, T t) noexcept
 	{
 		return tvec2<T>(v.x * t, v.y * t);
 	}
 
 	template<typename T>
 	inline
-	tvec2<T> operator*(const T& t, tvec2<T> v)
+	tvec2<T> operator*(const T& t, tvec2<T> v) noexcept
 	{
 		return tvec2<T>(v.x*t, v.y*t);
 	}
 // ---------------------------------------------------------------------------
 	template<typename T>
 	inline
-	tvec2<T> operator/(const tvec2<T>& v, T t)
+	tvec2<T> operator/(const tvec2<T>& v, T t) noexcept
 	{
 		return tvec2<T>(v.x / t, v.y / t);
 	}
 
 	template<typename T>
 	inline
-	tvec2<T> operator/(const T& t, tvec2<T> v)
+	tvec2<T> operator/(const T& t, tvec2<T> v) noexcept
 	{
 		return tvec2<T>(t/v.x, t/v.y);
 	}
 // ---------------------------------------------------------------------------
 	template<typename T>
 	inline
-	T length(const tvec2<T>& v)
+	T length(const tvec2<T>& v) noexcept
 	{
 		return sqrt(v.x*v.x + v.y*v.y);
 	}
 // ---------------------------------------------------------------------------
 	template<typename T>
 	inline
-	tvec2<T> normalize(const tvec2<T>& o)
+	tvec2<T> normalize(const tvec2<T>& o) noexcept
 	{
 		return o / length(o);
 	}
 // ---------------------------------------------------------------------------
 	template<typename T>
 	inline
-	T* value_ptr(tvec2<T>& v)
+	T* value_ptr(tvec2<T>& v) noexcept
 	{
 		return &(v.x);
 	}

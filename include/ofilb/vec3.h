@@ -23,34 +23,33 @@ namespace oi
 	template <typename T>
 	struct tvec3 {
 		// constructors
-		tvec3() : x(), y(), z() {}
-		explicit tvec3(const T& _xyz) : x(_xyz), y(_xyz), z(_xyz) {}
-		tvec3(const T& _x, const T& _y, T _z) : x(_x), y(_y), z(_z) {}
+		tvec3() noexcept : x(), y(), z() {}
+		explicit tvec3(const T& _xyz) noexcept : x(_xyz), y(_xyz), z(_xyz) {}
+		tvec3(const T& _x, const T& _y, T _z) noexcept : x(_x), y(_y), z(_z) {}
 		tvec3(const tvec3&) = default;
-		//tvec3(const tvec4<T>& v) : x(v.x), y(v.y), z(v.z) {}
-
-		tvec3& operator= (const tvec3& o);
+		
+		tvec3& operator= (const tvec3& o) noexcept;
 
 		// operators
-		const tvec3& operator+= (const T& t);
-		const tvec3& operator+= (const tvec3& o);
+		const tvec3& operator+= (const T& t) noexcept;
+		const tvec3& operator+= (const tvec3& o) noexcept;
 
-		const tvec3& operator-= (const T& t);
-		const tvec3& operator-= (const tvec3& o);
+		const tvec3& operator-= (const T& t) noexcept;
+		const tvec3& operator-= (const tvec3& o) noexcept;
 
-		const tvec3& operator*= (const T& t);
-		const tvec3& operator*= (const tvec3& o);
+		const tvec3& operator*= (const T& t) noexcept;
+		const tvec3& operator*= (const tvec3& o) noexcept;
 
-		const tvec3& operator/= (const T& t);
+		const tvec3& operator/= (const T& t) noexcept;
 
-		T& operator[] (const uint32_t& i);
-		const T& operator[] (const uint32_t& i) const;
-
-		template<typename c>
-		operator tvec3<c>();
+		T& operator[] (const uint32_t& i) noexcept;
+		const T& operator[] (const uint32_t& i) const noexcept;
 
 		template<typename c>
-		operator tvec2<c>();
+		operator tvec3<c>() noexcept;
+
+		template<typename c>
+		operator tvec2<c>() noexcept;
 
 		union
 		{
@@ -64,53 +63,53 @@ namespace oi
 
 	// operator +
 	template<typename T>
-	tvec3<T> operator+(const tvec3<T>&v, tvec3<T> u);
+	tvec3<T> operator+(const tvec3<T>&v, tvec3<T> u) noexcept;
 
 	template<typename T>
-	tvec3<T> operator+(const tvec3<T>& v, T t);
+	tvec3<T> operator+(const tvec3<T>& v, T t) noexcept;
 
 	template<typename T>
-	tvec3<T> operator+(const T& t, tvec3<T> v);
+	tvec3<T> operator+(const T& t, tvec3<T> v) noexcept;
 
 	// operator -
 	template<typename T>
-	tvec3<T> operator-(const tvec3<T>& v, tvec3<T> u);
+	tvec3<T> operator-(const tvec3<T>& v, tvec3<T> u) noexcept;
 
 	template<typename T>
-	tvec3<T> operator-(const tvec3<T>& v, T t);
+	tvec3<T> operator-(const tvec3<T>& v, T t) noexcept;
 
 	template<typename T>
-	tvec3<T> operator-(const T& t, tvec3<T> v);
+	tvec3<T> operator-(const T& t, tvec3<T> v) noexcept;
 
 	template<typename T>
-	tvec3<T> operator-(const tvec3<T>& v);
+	tvec3<T> operator-(const tvec3<T>& v) noexcept;
 
 	// operator *
 	template<typename T>
-	tvec3<T> operator*(const tvec3<T>& v, tvec3<T> u);
+	tvec3<T> operator*(const tvec3<T>& v, tvec3<T> u) noexcept;
 
 	template<typename T>
-	tvec3<T> operator*(const tvec3<T>& v, T t);
+	tvec3<T> operator*(const tvec3<T>& v, T t) noexcept;
 
 	template<typename T>
-	tvec3<T> operator*(const T& t, tvec3<T> v);
+	tvec3<T> operator*(const T& t, tvec3<T> v) noexcept;
 
 	// operator /
 	template<typename T>
-	tvec3<T> operator/(const tvec3<T>& v, T t);
+	tvec3<T> operator/(const tvec3<T>& v, T t) noexcept;
 
 	template<typename T>
-	tvec3<T> operator/(const T& t, tvec3<T> v);
+	tvec3<T> operator/(const T& t, tvec3<T> v) noexcept;
 
 	// functions
 	template<typename T>
-	T length(const tvec3<T>& v);
+	T length(const tvec3<T>& v) noexcept;
 
 	template<typename T>
-	tvec3<T> normalize(const tvec3<T>& o);
+	tvec3<T> normalize(const tvec3<T>& o) noexcept;
 
 	template<typename T>
-	T* value_ptr(tvec3<T>& v);
+	T* value_ptr(tvec3<T>& v) noexcept;
 
 } // namespace oi
 
