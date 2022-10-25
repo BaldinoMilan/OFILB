@@ -103,7 +103,7 @@ namespace oi {
 	tmat2<T> transpose(const tmat2<T>& m) noexcept;
 	
 	template<typename T>
-	tmat2<T> adjoint(const tmat2<T>& m) noexcept;
+	tmat2<T> adjugate(const tmat2<T>& m) noexcept;
 
 	template<typename T>
 	tmat2<T> cofactor(const tmat2<T>& m) noexcept;

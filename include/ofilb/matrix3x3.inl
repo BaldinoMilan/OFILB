@@ -236,6 +236,7 @@ namespace oi {
 	}
 // ---------------------------------------------------------------------------
 	template<typename T>
+	inline
 	tmat3<T> cofactor(const tmat3<T>& m) noexcept
 	{
 		return tmat3<T>((m[1][1] * m[2][2] - m[1][2] * m[2][1]), -(m[1][0] * m[2][2] - m[1][2] * m[2][0]), (m[1][0] * m[2][1] - m[1][1] * m[2][0]),
@@ -247,7 +248,8 @@ namespace oi {
 // ---------------------------------------------------------------------------
 
 	template<typename T>
-	tmat3<T> adjoint(const tmat3<T>& m) noexcept
+	inline
+	tmat3<T> adjugate(const tmat3<T>& m) noexcept
 	{
 		return tmat3<T>((m[1][1] * m[2][2] - m[1][2] * m[2][1]), -(m[0][1] * m[2][2] - m[0][2] * m[2][1]), (m[0][1] * m[1][2] - m[0][2] * m[1][1]),
 					   -(m[1][0] * m[2][2] - m[1][2] * m[2][0]),  (m[0][0] * m[2][2] - m[0][2] * m[2][0]),-(m[0][0] * m[1][2] - m[0][2] * m[1][0]),
@@ -267,7 +269,7 @@ namespace oi {
 	inline
 	tmat3<T> inverse(const tmat3<T>& m) noexcept
 	{
-		return ((T)1.0 / determinant(m)) * adjoint(m);
+		return ((T)1.0 / determinant(m)) * adjugate(m);
 	}
 // ---------------------------------------------------------------------------
 	template<typename T>

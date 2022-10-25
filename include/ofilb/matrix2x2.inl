@@ -211,7 +211,7 @@ namespace oi {
 // ---------------------------------------------------------------------------
 	template<typename T>
 	inline 
-	tmat2<T> adjoint(const tmat2<T>& m) noexcept
+	tmat2<T> adjugate(const tmat2<T>& m) noexcept
 	{
 		return tmat2<T>(m[1][1], -m[0][1], -m[1][0], m[0][0]);
 	}

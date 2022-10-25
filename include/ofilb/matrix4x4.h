@@ -125,7 +125,7 @@ namespace oi {
 	tmat4<T> cofactor(const tmat4<T>& m) noexcept;
 
 	template<typename T>
-	tmat4<T> adjoint(const tmat4<T>& m) noexcept;
+	tmat4<T> adjugate(const tmat4<T>& m) noexcept;
 
 	template<typename T>
 	T determinant(const tmat4<T>& m) noexcept;
