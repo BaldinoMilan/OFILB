@@ -1,4 +1,4 @@
-/* 
+/*
 --------------------------------------------------
 Obj Format Import Library (OFILB)
 --------------------------------------------------
@@ -9,7 +9,9 @@ Obj Format Import Library (OFILB)
 
 #include <iostream>
 #include <ofilb/ofilb.h>
+#include <ofilb/parse.h>
 
 int main()
 {
+	parse_file("path//");
 }
