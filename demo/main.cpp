@@ -9,9 +9,8 @@ Obj Format Import Library (OFILB)
 
 #include <iostream>
 #include <ofilb/ofilb.h>
-#include <ofilb/parse.h>
 
 int main()
 {
-	parse_file("path//");
+	oi::import_file("demo/res/nvidia3090/source/RTX 3090.obj");
 }
